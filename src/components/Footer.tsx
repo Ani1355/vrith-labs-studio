@@ -1,87 +1,156 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Twitter,
+  Dribbble,
+} from "lucide-react";
+import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
+import { TextHoverEffect } from "@/components/ui/hover-footer";
 
 const Footer = () => {
-  const footerLinks = {
-    Product: ["Features", "Pricing", "Case Studies", "FAQ"],
-    Company: ["About", "Blog", "Careers", "Contact"],
-    Resources: ["Documentation", "Guides", "Support", "Community"],
-    Legal: ["Privacy", "Terms", "Security", "Cookies"],
-  };
+  const footerLinks = [
+    {
+      title: "About Us",
+      links: [
+        { label: "Company History", href: "#" },
+        { label: "Meet the Team", href: "#" },
+        { label: "Careers", href: "#" },
+        { label: "Case Studies", href: "#" },
+      ],
+    },
+    {
+      title: "Helpful Links",
+      links: [
+        { label: "FAQs", href: "#" },
+        { label: "Support", href: "#" },
+        { label: "Documentation", href: "#" },
+      ],
+    },
+  ];
+
+  const contactInfo = [
+    {
+      icon: <Mail size={18} className="text-[#3ca2fa]" />,
+      text: "contact@vrithlabs.com",
+      href: "mailto:contact@vrithlabs.com",
+    },
+    {
+      icon: <Phone size={18} className="text-[#3ca2fa]" />,
+      text: "+1 (555) 123-4567",
+      href: "tel:+15551234567",
+    },
+    {
+      icon: <MapPin size={18} className="text-[#3ca2fa]" />,
+      text: "San Francisco, CA",
+    },
+  ];
 
   const socialLinks = [
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "GitHub" },
+    { icon: <Github size={20} />, label: "GitHub", href: "#" },
+    { icon: <Twitter size={20} />, label: "Twitter", href: "#" },
+    { icon: <Linkedin size={20} />, label: "LinkedIn", href: "#" },
+    { icon: <Dribbble size={20} />, label: "Dribbble", href: "#" },
   ];
 
   return (
-    <footer className="relative bg-card-dark text-card-dark-foreground py-20 px-6 overflow-hidden">
-      {/* Large Background Text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <div className="text-[12rem] md:text-[20rem] lg:text-[28rem] font-black opacity-[0.02] select-none whitespace-nowrap">
-          VRITH
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 text-xl font-bold mb-4">
-              <div className="w-8 h-8 bg-card-dark-foreground rounded-lg flex items-center justify-center">
-                <span className="text-card-dark text-sm font-black">V</span>
+    <footer className="bg-[#0F0F11]/10 relative h-fit rounded-3xl overflow-hidden m-8">
+      <div className="max-w-7xl mx-auto p-14 z-40 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
+          {/* Brand section */}
+          <div className="flex flex-col space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-[#3ca2fa] rounded-lg flex items-center justify-center">
+                <span className="text-white text-sm font-black">V</span>
               </div>
-              Vrith Labs
+              <span className="text-white text-3xl font-bold">Vrith Labs</span>
             </div>
-            <p className="text-card-dark-foreground/70 mb-6 max-w-xs">
+            <p className="text-sm leading-relaxed text-neutral-400">
               Building MVPs that move at startup speed. From idea to launch in 21 days.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-card-dark-foreground/10 flex items-center justify-center hover:bg-card-dark-foreground/20 transition-colors"
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
           </div>
 
-          {/* Link Columns */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h3 className="font-semibold mb-4">{title}</h3>
+          {/* Footer link sections */}
+          {footerLinks.map((section) => (
+            <div key={section.title}>
+              <h4 className="text-white text-lg font-semibold mb-6">
+                {section.title}
+              </h4>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link}>
+                {section.links.map((link) => (
+                  <li key={link.label} className="relative">
                     <a
-                      href="#"
-                      className="text-card-dark-foreground/70 hover:text-card-dark-foreground transition-colors text-sm"
+                      href={link.href}
+                      className="hover:text-[#3ca2fa] transition-colors text-neutral-400"
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-card-dark-foreground/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-card-dark-foreground/70">
-              © 2024 Vrith Labs. All rights reserved.
-            </div>
-            <div className="text-sm text-card-dark-foreground/70">
-              contact@vrithlabs.com
-            </div>
+          {/* Contact section */}
+          <div>
+            <h4 className="text-white text-lg font-semibold mb-6">
+              Contact Us
+            </h4>
+            <ul className="space-y-4">
+              {contactInfo.map((item, i) => (
+                <li key={i} className="flex items-center space-x-3">
+                  {item.icon}
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="hover:text-[#3ca2fa] transition-colors text-neutral-400 text-sm"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <span className="hover:text-[#3ca2fa] transition-colors text-neutral-400 text-sm">
+                      {item.text}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
+
+        <hr className="border-t border-gray-700 my-8" />
+
+        {/* Footer bottom */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
+          {/* Social icons */}
+          <div className="flex space-x-6 text-gray-400">
+            {socialLinks.map(({ icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="hover:text-[#3ca2fa] transition-colors"
+              >
+                {icon}
+              </a>
+            ))}
+          </div>
+
+          {/* Copyright */}
+          <p className="text-center md:text-left text-neutral-400">
+            &copy; {new Date().getFullYear()} Vrith Labs. All rights reserved.
+          </p>
+        </div>
       </div>
+
+      {/* Text hover effect */}
+      <div className="lg:flex hidden h-[30rem] -mt-52 -mb-36">
+        <TextHoverEffect text="VRITH" className="z-50" />
+      </div>
+
+      <FooterBackgroundGradient />
     </footer>
   );
 };
