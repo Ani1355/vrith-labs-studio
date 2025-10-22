@@ -36,7 +36,7 @@ const WhySection = () => {
           {/* Traditional Approach */}
           <div className="bg-card rounded-3xl p-8 md:p-10 border border-border">
             <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-6">
-              <div className="w-6 h-6 rounded-full border-2 border-foreground/20"></div>
+              
             </div>
             <h3 className="text-2xl font-bold mb-6">Traditional Approach</h3>
             <ul className="space-y-4">
