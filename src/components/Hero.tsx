@@ -14,10 +14,17 @@ const Hero = () => {
           
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
-            <Button size="lg" className="rounded-full text-base px-8 hover:scale-105 transition-transform">
+            <Button 
+              size="lg" 
+              className="rounded-full text-base px-8 font-semibold h-12 shadow-[0_4px_14px_0_rgba(0,0,0,0.15)] hover:shadow-[0_6px_20px_0_rgba(0,0,0,0.23)] hover:scale-105 transition-all"
+            >
               Book Your Consultation
             </Button>
-            <Button variant="outline" size="lg" className="rounded-full text-base px-8 hover:scale-105 transition-transform">
+            <Button 
+              variant="ghost" 
+              size="lg" 
+              className="rounded-full text-base px-8 hover:scale-105 transition-transform"
+            >
               See Pricing Plans
             </Button>
           </div>
